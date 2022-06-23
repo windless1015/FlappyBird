@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FlyBird : MonoBehaviour
 {
+    public GameManager gameManager;
     public float verticalVelocity = 2.4f;
     private Rigidbody2D birdRigBody;
     // Start is called before the first frame update
@@ -19,5 +20,10 @@ public class FlyBird : MonoBehaviour
         {
             birdRigBody.velocity = Vector2.up * verticalVelocity;
         }        
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        gameManager.GameOver();
     }
 }

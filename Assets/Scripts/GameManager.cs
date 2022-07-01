@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public GameObject gameOverCanvas;
     private void Start()
     {
+        gameOverCanvas.SetActive(false);
         Time.timeScale = 1;
     }
 

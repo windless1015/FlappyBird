@@ -1078,7 +1078,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 823297138}
-  verticalVelocity: 2.4
+  jumpForce: {x: 0, y: 100}
 --- !u!50 &1768524503
 Rigidbody2D:
   serializedVersion: 4

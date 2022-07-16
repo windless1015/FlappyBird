@@ -1079,6 +1079,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 823297138}
   verticalVelocity: 2.4
+  bulletPerfab: {fileID: 828396317124368984, guid: 93cdb18f94a293247b609b1dcd204c6f, type: 3}
 --- !u!50 &1768524503
 Rigidbody2D:
   serializedVersion: 4
@@ -1147,6 +1148,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxTime: 1.5
   pipe: {fileID: 7961001129204636935, guid: 376efb1912e9ff24599807e4abfb83da, type: 3}
+  pipeother: {fileID: 7961001129204636935, guid: 421de995c3bdad042861eff93d218b0e, type: 3}
   height: 0.5
 --- !u!4 &1844413676
 Transform:

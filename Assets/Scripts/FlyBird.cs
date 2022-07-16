@@ -9,6 +9,8 @@ public class FlyBird : MonoBehaviour
     //public Vector2 jumpForce = new Vector2(0, 300);
     private Rigidbody2D birdRigBody;
     // Start is called before the first frame update
+
+    public GameObject bulletPerfab;
     void Start()
     {
         birdRigBody = GetComponent<Rigidbody2D>();
@@ -28,6 +30,12 @@ public class FlyBird : MonoBehaviour
             //birdRigBody.AddForce(jumpForce);
 
         }
+        if (Input.GetMouseButtonDown(1) || Input.GetKeyDown("space")) {
+
+          var go =  GameObject.Instantiate(bulletPerfab, transform.position + new Vector3(0.3f,0,0), Quaternion.identity, null);
+            
+        }
+
 
         Vector2 screenPosition = Camera.main.WorldToScreenPoint(transform.position);
 

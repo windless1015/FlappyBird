@@ -48,13 +48,13 @@ public class FlyBird : MonoBehaviour
         {
             // first is min, second is max, third is the progress proportion
             float angle1 = Mathf.Lerp(0, 25, (birdRigBody.velocity.y / 10f)) + 5.0f;
-            Debug.Log("1111: " + angle1.ToString());
+            //Debug.Log("1111: " + angle1.ToString());
             transform.rotation = Quaternion.Euler(0, 0, angle1);
         }
         else
         {
             float angle = Mathf.Lerp(0, -90, (-birdRigBody.velocity.y / 30f)) - 5.0f;
-            Debug.Log("222: " + angle.ToString());
+            //Debug.Log("222: " + angle.ToString());
             transform.rotation = Quaternion.Euler(0, 0, angle);
         }
 

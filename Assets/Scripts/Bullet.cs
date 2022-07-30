@@ -14,17 +14,16 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //transform.position += Vector3.right * speed * Time.deltaTime;
-
-        
+        transform.position += Vector3.right * speed * Time.deltaTime;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Enemy") {
-            collision.gameObject.SetActive(false);
-
+        string tag = collision.gameObject.tag;
+        Debug.Log("3333:" + tag);
+        if (tag == "Ground" || tag == "Pipe") {
             Destroy(this.gameObject);
         }
+        
     }
 }

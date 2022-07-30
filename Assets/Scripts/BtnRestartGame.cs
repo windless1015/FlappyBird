@@ -11,10 +11,6 @@ public class BtnRestartGame : MonoBehaviour
 		Button btn = replay.GetComponent<Button>();
 		btn.onClick.AddListener(RestartGame);
 	}
-
-	// void TaskOnClick(){
-	// 	Debug.Log ("You have clicked the button!");
-	// }
     
     void RestartGame()
     {

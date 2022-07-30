@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - PipeBlankTrigger
   - Pipe
+  - Bullet
   layers:
   - Default
   - TransparentFX

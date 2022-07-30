@@ -12,6 +12,7 @@ public class FlyBird : MonoBehaviour
     public float VelocityPerJump = 3;
     public float XSpeed = 1;
     Vector3 birdRotation = Vector3.zero;
+    public GameObject bulletPerfab;
 
     enum birdCurDir
     {
@@ -28,7 +29,6 @@ public class FlyBird : MonoBehaviour
 
     void Update()
     {
-        
         //handle back key in Windows Phone
         if (Input.GetKeyDown(KeyCode.Escape))
             Application.Quit();
@@ -52,13 +52,14 @@ public class FlyBird : MonoBehaviour
             if (ifTriggerToStart())
             {
                 flyUp();
+                //generate the bullet
+                GameObject.Instantiate(bulletPerfab, transform.position + new Vector3(0.3f,0,0), Quaternion.identity, null);
             }
 
         }
 
         else if (GameStateManager.GameState == GameState.Dead)
         {
-            Debug.Log("dddddddddd");
             Vector2 contactPoint = Vector2.zero;
 
             if (Input.touchCount > 0)
@@ -77,11 +78,6 @@ public class FlyBird : MonoBehaviour
 
     }
 
-    void RestartGame()
-    {
-        GameStateManager.GameState = GameState.Introduction;
-        SceneManager.LoadScene(0);
-    }
 
     void FixedUpdate()
     {
@@ -158,13 +154,12 @@ public class FlyBird : MonoBehaviour
             {
                 GetComponent<AudioSource>().PlayOneShot(ScoredAudioClip);
                 ScoreManager.Score++;
-                Debug.Log("score: " + ScoreManager.Score.ToString());
             }
             else if (col.gameObject.tag == "Pipe")
             {
                 FlappyDies();
             }
-             Debug.Log(col.gameObject.tag);
+            //Debug.Log(col.gameObject.tag);
         }
     }
 

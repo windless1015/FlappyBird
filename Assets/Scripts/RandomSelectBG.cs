@@ -13,10 +13,6 @@ public class RandomSelectBG : MonoBehaviour
         (GetComponent<Renderer>() as SpriteRenderer).sprite = Backgrounds[randSeed];
 	}
 	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 
     //just set the backgrounds list from inspector
     public Sprite[] Backgrounds;

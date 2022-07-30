@@ -26,7 +26,6 @@ public class FloorMove : MonoBehaviour
         //this is the horizontal speed of bird
         // GameObject bird = GameObject.Find("FlappyBird");
         // float birdSpeedHorizontal = bird.GetComponent<Rigidbody2D>().velocity.y;
-        // Debug.Log("ddddddddddd:" + birdSpeedHorizontal.ToString());
         // birdSpeedHorizontal = System.Math.Abs(birdSpeedHorizontal);
         transform.Translate(-Time.deltaTime, 0, 0); //fixed speed
     }

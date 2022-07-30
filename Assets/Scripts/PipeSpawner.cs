@@ -25,10 +25,6 @@ public class PipeSpawner : MonoBehaviour
         SpawnPipe();
     }
 
-    void Update()
-    {
-    }
-
     private int UniqueRandomInt(int min, int max)
     {
         int val = Random.Range(min, max);
@@ -48,6 +44,10 @@ public class PipeSpawner : MonoBehaviour
 
     void SpawnPipe()
     {
+        if (pipeQueue.Count == 0)
+        {
+            CancelInvoke();
+        }
         //Debug.Log("dddddddddd " + pipeQueue.Count.ToString());
         if (GameStateManager.GameState == GameState.Playing)
         {

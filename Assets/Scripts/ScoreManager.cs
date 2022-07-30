@@ -8,7 +8,6 @@ public class ScoreManager : MonoBehaviour
     private int previousScore = -1;
     public static int Score { get; set; }
     [SerializeField] private TextMeshProUGUI scoreNumText;
-    bool forOnce = false;
     void Start()
     {
         Score = 0;

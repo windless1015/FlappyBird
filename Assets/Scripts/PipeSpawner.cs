@@ -2,34 +2,39 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class PipeSpawner : MonoBehaviour
 {
-    public float maxTime = 1;
-    private float timer = 0;
-    public GameObject pipe;
-    public GameObject pipeother;
-    public float height;
+
+    private GameObject pipe;
+    public GameObject[] pipeTypes;
+
+    public float timeMin = 0.7f;
+    public float timeMax = 2f;
 
     void Start()
     {
-        GameObject newpipe;
-        var showIndex = Random.Range(1, 10);
-        if (showIndex > 2) {
-            newpipe = Instantiate(pipe);
-        }else
-        newpipe = Instantiate(pipeother);
-        newpipe.transform.position = transform.position + new Vector3(0, Random.Range(-height, height), 0);
+        //randomly generate the pipe
+        pipe = pipeTypes[Random.Range(0, pipeTypes.Length)];
     }
 
     void Update()
     {
-        if (timer > maxTime)
-        {
-            GameObject newpipe = Instantiate(pipe);
-            newpipe.transform.position = transform.position + new Vector3(0, Random.Range(-height, height), 0);
-            Destroy(newpipe, 15);
-            timer = 0;
-        }
-        timer += Time.deltaTime;
+
     }
+
+    void SpawnPipe()
+    {
+        if (GameStateManager.GameState == GameState.Playing)
+        {
+            //random y position
+            float randomY = Random.Range(-0.5f, 1f);
+            GameObject newPipe = Instantiate(pipe, this.transform.position + new Vector3(0, randomY, 0), Quaternion.identity) as GameObject;
+        }
+        // if the time is fixed, the space of two pipes will be the same
+        //the difficulty will be lower
+        //use the InvokeRepeating
+        Invoke("SpawnPipe", Random.Range(timeMin, timeMax));
+    }
+
 }

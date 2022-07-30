@@ -18,6 +18,9 @@ public class Bullet : MonoBehaviour
         transform.position += Vector3.right * speed * Time.deltaTime;
     }
 
+
+    
+
     void OnTriggerEnter2D(Collider2D col)
     {
         string tag = col.gameObject.tag;//Piranha

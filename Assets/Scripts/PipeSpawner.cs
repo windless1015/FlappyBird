@@ -11,8 +11,8 @@ public class PipeSpawner : MonoBehaviour
 
     private List<int> usedValues;
     private Queue<GameObject> pipeQueue = new Queue<GameObject>();
-    public float timeMin = 2.5f;
-    public float timeMax = 4.5f;
+    public float timeMin;
+    public float timeMax;
 
     void Start()
     {
@@ -34,6 +34,26 @@ public class PipeSpawner : MonoBehaviour
         return val;
     }
 
+    public void setMinTime(float delta)
+    {
+        if(timeMin < 1.0f)
+        {
+            timeMin = 1.0f;
+            return;
+        } 
+        timeMin = timeMin - delta;
+    }
+
+    public void setMaxTime(float delta)
+    {
+        if(timeMax < 2.0f)
+        {
+            timeMax = 2.0f;
+            return;
+        }
+        timeMax = timeMax - delta;
+
+    }
 
     public void CancelGenPipes()
     {

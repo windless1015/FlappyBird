@@ -159,6 +159,10 @@ public class FlyBird : MonoBehaviour
             {
                 FlappyDies();
             }
+            else if (col.gameObject.tag == "Piranha")
+            {
+                FlappyDies();
+            }
             //Debug.Log(col.gameObject.tag);
         }
     }

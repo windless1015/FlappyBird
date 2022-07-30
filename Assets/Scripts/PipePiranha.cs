@@ -44,6 +44,5 @@ public class PipePiranha : MonoBehaviour
     void Update()
     {
         transform.position += Vector3.forward * speed * Time.deltaTime;
-        //transform.position += new Vector3(-1,0,0) *speed * Time.deltaTime;
     }
 }

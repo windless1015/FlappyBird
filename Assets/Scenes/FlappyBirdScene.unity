@@ -1849,7 +1849,7 @@ GameObject:
   - component: {fileID: 1844413677}
   m_Layer: 0
   m_Name: PipeSpwner
-  m_TagString: Untagged
+  m_TagString: PipeSpawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1884,8 +1884,8 @@ MonoBehaviour:
   pipeTypes:
   - {fileID: 2708441678560541619, guid: 35293b99a13faea4783ddd49249e1700, type: 3}
   - {fileID: 2708441678560541619, guid: 7fa5f989cf801434d8a00f46db892bf9, type: 3}
-  timeMin: 1.5
-  timeMax: 3
+  timeMin: 2.5
+  timeMax: 4.5
 --- !u!1 &2001094921
 GameObject:
   m_ObjectHideFlags: 0

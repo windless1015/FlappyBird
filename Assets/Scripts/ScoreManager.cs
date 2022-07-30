@@ -8,9 +8,11 @@ public class ScoreManager : MonoBehaviour
     private int previousScore = -1;
     public static int Score { get; set; }
     [SerializeField] private TextMeshProUGUI scoreNumText;
+    bool forOnce = false;
     void Start()
     {
         Score = 0;
+        InvokeRepeating("ImproveGameDifficulty", 0, 20 ); //every 20 second to improve the difficulty
     }
 
     void Update()
@@ -21,5 +23,13 @@ public class ScoreManager : MonoBehaviour
         { 
             scoreNumText.text = Score.ToString();
         }
+        
+    }
+
+    private void ImproveGameDifficulty()
+    {
+        GameObject pipeSpawner = GameObject.FindGameObjectWithTag("PipeSpawner");
+		pipeSpawner.SendMessage("setMinTime", 0.1);
+        pipeSpawner.SendMessage("setMinTime", 0.1);
     }
 }

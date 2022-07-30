@@ -23,7 +23,7 @@ public class PipePiranha : MonoBehaviour
         */
 
         var showIndex= Random.Range(1, 16);
-       showIndex = 1;
+       //showIndex = 1;
 
         if (showIndex < piranhaList.Length)
         {

@@ -23,12 +23,10 @@ public class PipePiranha : MonoBehaviour
         */
 
         var showIndex= Random.Range(1, 16);
-       //showIndex = 1;
+       showIndex = 1;
 
         if (showIndex < piranhaList.Length)
         {
-            Debug.Log(showIndex.ToString() + ","+piranhaList.Length.ToString());
-
             piranhaList[showIndex].SetActive(true);
             if (showIndex < 2) {
                 piranhaList[showIndex].transform.DOLocalMoveY(-0.46f, 2f); //up
@@ -37,6 +35,7 @@ public class PipePiranha : MonoBehaviour
             piranhaList[showIndex].transform.DOLocalMoveY(0.358f, 2f); //down
 
             }
+            piranhaList[showIndex].layer = 0;
         }
 
 
@@ -45,6 +44,6 @@ public class PipePiranha : MonoBehaviour
     void Update()
     {
         transform.position += Vector3.forward * speed * Time.deltaTime;
-        //transform.position += speed * Time.deltaTime;
+        //transform.position += new Vector3(-1,0,0) *speed * Time.deltaTime;
     }
 }

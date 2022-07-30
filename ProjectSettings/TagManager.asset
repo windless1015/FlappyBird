@@ -9,6 +9,7 @@ TagManager:
   - PipeBlankTrigger
   - Pipe
   - Bullet
+  - Piranha
   layers:
   - Default
   - TransparentFX

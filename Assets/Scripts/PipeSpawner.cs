@@ -10,15 +10,14 @@ public class PipeSpawner : MonoBehaviour
     public GameObject[] pipeTypes;
 
     private List<int> usedValues;
-    private Queue<GameObject> pipeQueue;
-    public float timeMin = 1.0f;
-    public float timeMax = 2.5f;
+    private Queue<GameObject> pipeQueue = new Queue<GameObject>();
+    public float timeMin = 2.5f;
+    public float timeMax = 4.5f;
 
     void Start()
     {
         usedValues = new List<int>();
-        pipeQueue = new Queue<GameObject>();
-
+ 
         //randomly generate the pipe
         //Debug.Log("dddddddddd " + pipeTypes.Length.ToString());
         pipe = pipeTypes[Random.Range(0, pipeTypes.Length)];
@@ -65,8 +64,9 @@ public class PipeSpawner : MonoBehaviour
             //Debug.Log("random number : " + randomIdx.ToString());
             GameObject newpipe;
             //random y position
-            float randomY = Random.Range(-0.5f, 1f);
+            float randomY = Random.Range(-0.5f, 0.8f);
             newpipe = Instantiate(pipeTypes[randomIdx], this.transform.position + new Vector3(0, randomY, 0), Quaternion.identity) as GameObject;
+            newpipe.transform.position=new Vector3( newpipe.transform.position.x, newpipe.transform.position.y,0);
             pipeQueue.Enqueue(newpipe);
         }
         // if the time is fixed, the space of two pipes will be the same

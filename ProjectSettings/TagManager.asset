@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
+  - Enemy
+  - PipeBlankTrigger
+  - Pipe
   layers:
   - Default
   - TransparentFX

@@ -1,44 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class ScoreManager : MonoBehaviour
 {
     private int previousScore = -1;
-    public Sprite[] numberSprites;
-    public SpriteRenderer unitBit, tenBit, hundredBit;
     public static int Score { get; set; }
-
-   
+    [SerializeField] private TextMeshProUGUI scoreNumText;
     void Start()
     {
-        (tenBit.gameObject as GameObject).SetActive(false);
-        (hundredBit.gameObject as GameObject).SetActive(false);
+        //scoreNumText = GetComponent<TMPro.TextMeshProUGUI>();
+        Score = 0;
     }
 
     void Update()
     {
-        if (previousScore != Score) //save perf from non needed calculations
+        if (previousScore != Score) //save the score for display
         { 
-            if(Score < 10)
-            {
-                //just draw units
-                unitBit.sprite = numberSprites[Score];
-            }
-            else if(Score >= 10 && Score < 100)
-            {
-                (tenBit.gameObject as GameObject).SetActive(true);
-                tenBit.sprite = numberSprites[Score / 10];
-                unitBit.sprite = numberSprites[Score % 10];
-            }
-            else if(Score >= 100)
-            {
-                (hundredBit.gameObject as GameObject).SetActive(true);
-                hundredBit.sprite = numberSprites[Score / 100];
-                int rest = Score % 100;
-                tenBit.sprite = numberSprites[rest / 10];
-                unitBit.sprite = numberSprites[rest % 10];
-            }
+            //GetComponent<TMPro.TextMeshProUGUI>().text = Score.ToString();
+            // GameObject.Find("X").GetComponent<TextMeshProUGUI>();
+            scoreNumText.text = Score.ToString();
         }
     }
 }

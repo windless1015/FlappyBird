@@ -26,10 +26,6 @@ public class FlyBird : MonoBehaviour
 
     }
 
-
-
-
-    // Update is called once per frame
     void Update()
     {
         //handle back key in Windows Phone
@@ -73,7 +69,6 @@ public class FlyBird : MonoBehaviour
                 (Camera.main.ScreenToWorldPoint(contactPoint)))
             {
                 GameStateManager.GameState = GameState.Introduction;
-                //Application.LoadLevel(Application.loadedLevelName);
                 SceneManager.LoadScene(0);
             }
         }
@@ -86,9 +81,9 @@ public class FlyBird : MonoBehaviour
         //just jump up and down on intro screen
         if (GameStateManager.GameState == GameState.Introduction)
         {
-            if (GetComponent<Rigidbody2D>().velocity.y < -1) //when the speed drops, give a boost
-                GetComponent<Rigidbody2D>().AddForce(new Vector2(0, GetComponent<Rigidbody2D>().mass * 5500 * Time.deltaTime)); //lots of play and stop 
-                                                        //and play and stop etc to find this value, feel free to modify
+            if (GetComponent<Rigidbody2D>().velocity.y < -1)
+                GetComponent<Rigidbody2D>().AddForce(new Vector2(0, GetComponent<Rigidbody2D>().mass * 5500 * Time.deltaTime));
+
         }
         else if (GameStateManager.GameState == GameState.Playing || GameStateManager.GameState == GameState.Dead)
         {
@@ -152,6 +147,7 @@ public class FlyBird : MonoBehaviour
             {
                 GetComponent<AudioSource>().PlayOneShot(ScoredAudioClip);
                 ScoreManager.Score++;
+                Debug.Log("score: " + ScoreManager.Score.ToString());
             }
             else if (col.gameObject.tag == "Pipe")
             {

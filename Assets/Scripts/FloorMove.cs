@@ -13,6 +13,7 @@ public class FloorMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Debug.Log(GameStateManager.GameState);
         if (GameStateManager.GameState == GameState.Dead)
             return;
     

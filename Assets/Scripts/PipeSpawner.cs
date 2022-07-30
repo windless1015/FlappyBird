@@ -27,7 +27,6 @@ public class PipeSpawner : MonoBehaviour
 
     void Update()
     {
-
     }
 
     private int UniqueRandomInt(int min, int max)
@@ -43,7 +42,6 @@ public class PipeSpawner : MonoBehaviour
 
     public void CancelGenPipes()
     {
-        Debug.Log("CancelGenPipes is being done!");
         CancelInvoke();
     }
 

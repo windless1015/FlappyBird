@@ -10,16 +10,15 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI scoreNumText;
     void Start()
     {
-        //scoreNumText = GetComponent<TMPro.TextMeshProUGUI>();
         Score = 0;
     }
 
     void Update()
     {
+        if (GameStateManager.GameState == GameState.Dead)
+            return;
         if (previousScore != Score) //save the score for display
         { 
-            //GetComponent<TMPro.TextMeshProUGUI>().text = Score.ToString();
-            // GameObject.Find("X").GetComponent<TextMeshProUGUI>();
             scoreNumText.text = Score.ToString();
         }
     }

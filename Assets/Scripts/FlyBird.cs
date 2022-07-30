@@ -28,6 +28,7 @@ public class FlyBird : MonoBehaviour
 
     void Update()
     {
+        
         //handle back key in Windows Phone
         if (Input.GetKeyDown(KeyCode.Escape))
             Application.Quit();
@@ -57,6 +58,7 @@ public class FlyBird : MonoBehaviour
 
         else if (GameStateManager.GameState == GameState.Dead)
         {
+            Debug.Log("dddddddddd");
             Vector2 contactPoint = Vector2.zero;
 
             if (Input.touchCount > 0)
@@ -78,11 +80,14 @@ public class FlyBird : MonoBehaviour
 
     void FixedUpdate()
     {
-        //just jump up and down on intro screen
+        if (GameStateManager.GameState == GameState.Dead)
+        {
+            return;
+        }
         if (GameStateManager.GameState == GameState.Introduction)
         {
             if (GetComponent<Rigidbody2D>().velocity.y < -1)
-                GetComponent<Rigidbody2D>().AddForce(new Vector2(0, GetComponent<Rigidbody2D>().mass * 5500 * Time.deltaTime));
+                GetComponent<Rigidbody2D>().AddForce(new Vector2(0, GetComponent<Rigidbody2D>().mass * 6000 * Time.deltaTime));
 
         }
         else if (GameStateManager.GameState == GameState.Playing || GameStateManager.GameState == GameState.Dead)
@@ -102,6 +107,7 @@ public class FlyBird : MonoBehaviour
 
     void birdFlyX()
     {
+
         transform.position += new Vector3(Time.deltaTime * XSpeed, 0, 0);
     }
 
@@ -153,6 +159,7 @@ public class FlyBird : MonoBehaviour
             {
                 FlappyDies();
             }
+             Debug.Log(col.gameObject.tag);
         }
     }
 
@@ -161,7 +168,7 @@ public class FlyBird : MonoBehaviour
     {
         if (GameStateManager.GameState == GameState.Playing)
         {
-            if (collision.gameObject.tag == "Floor")
+            if (collision.gameObject.tag == "Ground")
             {
                 FlappyDies();
             }

@@ -13,9 +13,15 @@ public class CameraFollow : MonoBehaviour
     float cameraZ;
 
 
-	void Update () {
+	void Update () 
+    {
+
+        if(GameStateManager.GameState == GameState.Dead)
+        {
+            return;
+        }
         transform.position = new Vector3(birdTransform.position.x + 0.5f, 0, cameraZ);
-       
+
 	}
 
 }

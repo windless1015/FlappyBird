@@ -8,7 +8,7 @@ public class FlyBird : MonoBehaviour
     public AudioClip FlyAudioClip, DeathAudioClip, ScoredAudioClip;
     public Sprite GetReadySprite;
     public float RotateUpSpeed = 1, RotateDownSpeed = 1;
-    public GameObject IntroGUI, DeathGUI;
+    public GameObject gameStartCanvas, gameOverCanvas;
     public Collider2D restartButtonGameCollider;
     public float VelocityPerJump = 3;
     public float XSpeed = 1;
@@ -41,7 +41,7 @@ public class FlyBird : MonoBehaviour
             {
                 BoostOnYAxis();
                 GameStateManager.GameState = GameState.Playing;
-                IntroGUI.SetActive(false);
+                gameStartCanvas.SetActive(false);
                 ScoreManager.Score = 0;
             }
         }
@@ -175,7 +175,7 @@ public class FlyBird : MonoBehaviour
     void FlappyDies()
     {
         GameStateManager.GameState = GameState.Dead;
-        DeathGUI.SetActive(true);
+        gameOverCanvas.SetActive(true);
         //play the death audio
         GetComponent<AudioSource>().PlayOneShot(DeathAudioClip);
     }

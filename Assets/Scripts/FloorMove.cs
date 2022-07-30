@@ -21,7 +21,12 @@ public class FloorMove : MonoBehaviour
         {
             transform.localPosition = new Vector3(2.06f, transform.localPosition.y, transform.localPosition.z);
         }
-        float birdSpeedHorizontal = 1.0f; //this is the horizontal speed of bird
-        transform.Translate(-Time.deltaTime * birdSpeedHorizontal, 0, 0);
+
+        //this is the horizontal speed of bird
+        // GameObject bird = GameObject.Find("FlappyBird");
+        // float birdSpeedHorizontal = bird.GetComponent<Rigidbody2D>().velocity.y;
+        // Debug.Log("ddddddddddd:" + birdSpeedHorizontal.ToString());
+        // birdSpeedHorizontal = System.Math.Abs(birdSpeedHorizontal);
+        transform.Translate(-Time.deltaTime, 0, 0); //fixed speed
     }
 }

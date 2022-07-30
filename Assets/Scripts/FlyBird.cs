@@ -13,18 +13,21 @@ public class FlyBird : MonoBehaviour
     public float XSpeed = 1;
     Vector3 birdRotation = Vector3.zero;
 
+    enum birdCurDir
+    {
+        up, down
+    }
+
+    birdCurDir flappyYAxisTravelState;
+
     // Use this for initialization
     void Start()
     {
 
     }
 
-    FlappyYAxisTravelState flappyYAxisTravelState;
 
-    enum FlappyYAxisTravelState
-    {
-        GoingUp, GoingDown
-    }
+
 
     // Update is called once per frame
     void Update()
@@ -33,10 +36,11 @@ public class FlyBird : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
             Application.Quit();
 
+        // starting
         if (GameStateManager.GameState == GameState.Introduction)
         {
             birdFlyX();
-            if (WasTouchedOrClicked())
+            if (ifTriggerToStart())
             {
                 flyUp();
                 GameStateManager.GameState = GameState.Playing;
@@ -48,7 +52,7 @@ public class FlyBird : MonoBehaviour
         else if (GameStateManager.GameState == GameState.Playing)
         {
             birdFlyX();
-            if (WasTouchedOrClicked())
+            if (ifTriggerToStart())
             {
                 flyUp();
             }
@@ -92,7 +96,7 @@ public class FlyBird : MonoBehaviour
         }
     }
 
-    bool WasTouchedOrClicked()
+    bool ifTriggerToStart()
     {
         if (Input.GetButtonUp("Jump") || Input.GetMouseButtonDown(0) || 
             (Input.touchCount > 0 && Input.touches[0].phase == TouchPhase.Ended))
@@ -116,18 +120,18 @@ public class FlyBird : MonoBehaviour
 
     private void BirdRotates()
     {
-        if (GetComponent<Rigidbody2D>().velocity.y > 0) flappyYAxisTravelState = FlappyYAxisTravelState.GoingUp;
-        else flappyYAxisTravelState = FlappyYAxisTravelState.GoingDown;
+        if (GetComponent<Rigidbody2D>().velocity.y > 0) flappyYAxisTravelState = birdCurDir.up;
+        else flappyYAxisTravelState = birdCurDir.down;
 
         float degreesToAdd = 0;
 
         switch (flappyYAxisTravelState)
         {
-            case FlappyYAxisTravelState.GoingUp:
-                degreesToAdd = 6 * RotateUpSpeed;
+            case birdCurDir.up:
+                degreesToAdd = 3 * RotateUpSpeed;
                 break;
-            case FlappyYAxisTravelState.GoingDown:
-                degreesToAdd = -3 * RotateDownSpeed;
+            case birdCurDir.down:
+                degreesToAdd = -2 * RotateDownSpeed;
                 break;
             default:
                 break;

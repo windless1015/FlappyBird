@@ -36,10 +36,10 @@ public class FlyBird : MonoBehaviour
 
         if (GameStateManager.GameState == GameState.Introduction)
         {
-            MoveBirdOnXAxis();
+            birdFlyX();
             if (WasTouchedOrClicked())
             {
-                BoostOnYAxis();
+                flyUp();
                 GameStateManager.GameState = GameState.Playing;
                 gameStartCanvas.SetActive(false);
                 ScoreManager.Score = 0;
@@ -48,10 +48,10 @@ public class FlyBird : MonoBehaviour
 
         else if (GameStateManager.GameState == GameState.Playing)
         {
-            MoveBirdOnXAxis();
+            birdFlyX();
             if (WasTouchedOrClicked())
             {
-                BoostOnYAxis();
+                flyUp();
             }
 
         }
@@ -102,12 +102,12 @@ public class FlyBird : MonoBehaviour
             return false;
     }
 
-    void MoveBirdOnXAxis()
+    void birdFlyX()
     {
         transform.position += new Vector3(Time.deltaTime * XSpeed, 0, 0);
     }
 
-    void BoostOnYAxis()
+    void flyUp()
     {
         GetComponent<Rigidbody2D>().velocity = new Vector2(0, VelocityPerJump);
         GetComponent<AudioSource>().PlayOneShot(FlyAudioClip);
@@ -133,10 +133,8 @@ public class FlyBird : MonoBehaviour
             default:
                 break;
         }
-        //solution with negative eulerAngles found here: http://answers.unity3d.com/questions/445191/negative-eular-angles.html
-
-        //clamp the values so that -90<rotation<45 *always*
-        birdRotation = new Vector3(0, 0, Mathf.Clamp(birdRotation.z + degreesToAdd, -90, 45));
+        //from -30  - 30
+        birdRotation = new Vector3(0, 0, Mathf.Clamp(birdRotation.z + degreesToAdd, -30, 30));
         transform.eulerAngles = birdRotation;
 
     }

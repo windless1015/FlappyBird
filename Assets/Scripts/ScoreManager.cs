@@ -18,7 +18,6 @@ public class ScoreManager : MonoBehaviour
 
     void Update()
     {
-        return;
         if (previousScore != Score) //save perf from non needed calculations
         { 
             if(Score < 10)

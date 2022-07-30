@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class FlyBird : MonoBehaviour
 {
     public AudioClip FlyAudioClip, DeathAudioClip, ScoredAudioClip;
-    public Sprite GetReadySprite;
     public float RotateUpSpeed = 1, RotateDownSpeed = 1;
     public GameObject gameStartCanvas, gameOverCanvas;
     public Collider2D restartButtonGameCollider;

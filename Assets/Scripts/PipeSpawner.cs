@@ -9,12 +9,13 @@ public class PipeSpawner : MonoBehaviour
     private GameObject pipe;
     public GameObject[] pipeTypes;
 
-    public float timeMin = 0.7f;
-    public float timeMax = 2f;
+    public float timeMin = 1.0f;
+    public float timeMax = 2.5f;
 
     void Start()
     {
         //randomly generate the pipe
+        Debug.Log("dddddddddd " + pipeTypes.Length.ToString());
         pipe = pipeTypes[Random.Range(0, pipeTypes.Length)];
     }
 
